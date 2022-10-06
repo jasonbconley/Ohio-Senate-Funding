@@ -7,6 +7,9 @@ jobs:
   update_data:
     name: Update data if there are new filings
     runs-on: ubuntu-latest
+    services:
+      selenium:
+        image: selenium/standalone-chrome
     steps:
       - name: Checkout
         uses: actions/checkout@v2
