@@ -15,6 +15,15 @@ jobs:
         with:
           python-version: '3.7'
           cache: 'pip'
+      - name: Removing previous chrome instances on runner 
+        run: sudo apt purge google-chrome-stable  
+        
+       # Need to fetch reqs if needed
+      - name: Installing all necessary packages
+        run: pip install chromedriver-autoinstaller pyvirtualdisplay
+      - name: Install xvfb
+        run: sudo apt-get install xvfb
+
       - name: Install software
         run: sudo apt-get install -y chromium-browser
       - name: Install Dependencies
