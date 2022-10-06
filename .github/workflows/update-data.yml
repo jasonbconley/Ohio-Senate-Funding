@@ -6,10 +6,8 @@ on:
 jobs:
   update_data:
     name: Update data if there are new filings
+    uses: nanasess/setup-chromedriver@v1.0.5
     runs-on: ubuntu-latest
-    services:
-      selenium:
-        image: selenium/standalone-chrome
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -19,9 +17,7 @@ jobs:
           python-version: '3.7'
           cache: 'pip'
       - name: Installing all necessary packages
-        run: pip install chromedriver-autoinstaller selenium pyvirtualdisplay
-      - name: Install xvfb
-        run: sudo apt-get install xvfb
+        run: pip install chromedriver-autoinstaller
       - name: Install Dependencies
         run: pip install -r requirements.txt
       - name: Run Script and Update Data
