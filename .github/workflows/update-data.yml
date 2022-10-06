@@ -15,6 +15,10 @@ jobs:
         with:
           python-version: '3.7'
           cache: 'pip'
+      - name: Installing all necessary packages
+        run: pip install chromedriver-autoinstaller selenium pyvirtualdisplay
+      - name: Install xvfb
+        run: sudo apt-get install xvfb
       - name: Install Dependencies
         run: pip install -r requirements.txt
       - name: Run Script and Update Data
