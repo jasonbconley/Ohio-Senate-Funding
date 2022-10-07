@@ -1,6 +1,6 @@
 import pandas as pd
 
-names = pd.read_csv('links/file_names.txt')
+names = pd.read_csv('links/file_names.txt', header=1)
 os.remove('links/file_names.txt')
 
 ryan_file = 'data/{}'.format(names['Ryan'])
