@@ -36,7 +36,7 @@ ryan_link = links[0].get_attribute('href')
 ryan_file = ryan_link[ryan_link.rfind('/')+1:]
 
 f = open('links/links.txt', 'a')
-f.write(ryan_file)
+f.write(ryan_link)
 
 driver.get(vance_url)
 driver.implicitly_wait(5)
