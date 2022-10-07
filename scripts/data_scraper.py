@@ -42,12 +42,12 @@ links = driver.find_elements_by_xpath("//*[contains(text(), '.csv')]")
 vance_link = links[0].get_attribute('href')
 vance_file = vance_link[vance_link.rfind('/')+1:]
 
-f = open('../file_names.txt', 'a')
+f = open('/file_names.txt', 'a')
 f.write('Ryan,Vance\n')
 f.write('{},{}'.format(ryan_file, vance_file))
 f.close()
 
-f = open('../links.txt', 'a')
+f = open('/links.txt', 'a')
 f.write(ryan_link + '\n')
 f.write(vance_link)
 f.close()
