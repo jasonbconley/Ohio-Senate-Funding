@@ -20,15 +20,17 @@ jobs:
         run: pip install chromedriver-autoinstaller pyvirtualdisplay
 
       - name: Install software
-        run: sudo apt-get update
-        run: sudo apt-get install -y chromium-driver
-        run: sudo apt-get install xvfb
-        run: export PATH="$HOME/.local/bin:$PATH"
+        run: | 
+          sudo apt-get update
+          sudo apt-get install -y chromium-driver
+          sudo apt-get install xvfb
+          export PATH="$HOME/.local/bin:$PATH"
       - name: Install Dependencies
         run: pip install -r requirements.txt
       - name: Run Script and Update Data
-        run: python data_scraper.py
-        run: wget -i links/links.txt
+        run: |
+          python data_scraper.py
+          wget -i links/links.txt
       - name: Commit and Push Changes
         run: |
           git config --local user.email "actions@github.com"
