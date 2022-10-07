@@ -43,7 +43,7 @@ vance_link = links[0].get_attribute('href')
 vance_file = vance_link[vance_link.rfind('/')+1:]
 
 f = open('links/file_names.txt', 'a')
-f.write('Ryan, Vance')
+f.write('Ryan, Vance\n')
 f.write('{}, {}'.format(ryan_file, vance_file))
 f.close()
 
