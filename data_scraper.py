@@ -35,9 +35,6 @@ links = driver.find_elements_by_xpath("//*[contains(text(), '.csv')]")
 ryan_link = links[0].get_attribute('href')
 ryan_file = ryan_link[ryan_link.rfind('/')+1:]
 
-f = open('links/links.txt', 'a')
-f.write(ryan_link + '\n')
-
 driver.get(vance_url)
 driver.implicitly_wait(5)
 
@@ -45,5 +42,12 @@ links = driver.find_elements_by_xpath("//*[contains(text(), '.csv')]")
 vance_link = links[0].get_attribute('href')
 vance_file = vance_link[vance_link.rfind('/')+1:]
 
+f = open('links/file_names.txt', 'a')
+f.write('Ryan, Vance')
+f.write('{}, {}'.format(ryan_file, vance_file))
+f.close()
+
+f = open('links/links.txt', 'a')
+f.write(ryan_link + '\n')
 f.write(vance_link)
 f.close()
