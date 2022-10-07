@@ -38,7 +38,7 @@ ryan_file = ryan_link[ryan_link.rfind('/')+1:]
 f = open('links/links.txt', 'a')
 f.write(ryan_file)
 
-driver.get(vance_link)
+driver.get(vance_url)
 driver.implicitly_wait(5)
 
 links = driver.find_elements_by_xpath("//*[contains(text(), '.csv')]")
