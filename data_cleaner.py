@@ -1,4 +1,5 @@
 import pandas as pd
+import os
 
 names = pd.read_csv('links/file_names.txt', header=1)
 os.remove('links/file_names.txt')
