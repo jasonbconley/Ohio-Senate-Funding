@@ -29,10 +29,10 @@ jobs:
         run: pip install -r requirements.txt
       - name: Run Script and Update Data
         run: |
-          python data_scraper.py
+          python scripts/data_scraper.py
           wget -i links/links.txt -P data
           rm links/links.txt
-          python data_cleaner.py
+          python scripts/data_cleaner.py
       - name: Commit and Push Changes
         run: |
           git config --local user.email "actions@github.com"
