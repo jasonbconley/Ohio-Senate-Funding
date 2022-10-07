@@ -1,11 +1,9 @@
 import pandas as pd
 import os
 
-names = pd.read_csv('links/file_names.txt')
+ryan_file = 'data/{}'.format(pd.read_csv('links/file_names.txt', header=0)['Ryan'].iloc[0])
+vance_file = 'data/{}'.format(pd.read_csv('links/file_names.txt', header=0)['Vance'].iloc[0])
 os.remove('links/file_names.txt')
-
-ryan_file = 'data/{}'.format(names['Ryan'])
-vance_file = 'data/{}'.format(names['Vance'])
 
 def convert_string(x):
     if not x:
