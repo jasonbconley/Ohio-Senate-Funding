@@ -6,7 +6,7 @@ on:
 jobs:
   update_data:
     name: Update data if there are new filings
-    runs-on: ubuntu-latest
+    runs-on: debian-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -14,26 +14,26 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: '3.7'
-          cache: 'pip'
-      - name: Removing previous chrome instances on runner 
-        run: sudo apt purge google-chrome-stable  
-        
-       # Need to fetch reqs if needed
+          cache: 'pip'  
+      
       - name: Installing ChromeDriver and Display
         run: pip install chromedriver-autoinstaller pyvirtualdisplay
 
       - name: Install software
-        run: sudo apt-get install -y chromium-browser
+        run: sudo apt-get update
+        run: sudo apt-get install -y chromium-driver
+        run: sudo apt-get install xvfb
+        run: export PATH="$HOME/.local/bin:$PATH"
       - name: Install Dependencies
         run: pip install -r requirements.txt
       - name: Run Script and Update Data
         run: |
-          jupyter nbconvert --to script Finance_Data_Scraper.ipynb
-          python Finance_Data_Scraper.py
+          python data_scraper.py
+          wget -i links/links.txt
       - name: Commit and Push Changes
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
-          git add data/tim_ryan.csv data/jd_vance.csv
+          git add links/links.txt
           git commit -m "Updated data on `date` with GitHub Actions"
           git push origin master
