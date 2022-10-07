@@ -29,7 +29,6 @@ jobs:
         run: pip install -r requirements.txt
       - name: Run Script and Update Data
         run: |
-          mkdir links
           python data_scraper.py
           wget -i links/links.txt -P data
           rm links/links.txt
