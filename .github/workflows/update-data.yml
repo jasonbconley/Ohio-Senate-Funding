@@ -6,7 +6,7 @@ on:
 jobs:
   update_data:
     name: Update data if there are new filings
-    runs-on: debian-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -30,11 +30,13 @@ jobs:
       - name: Run Script and Update Data
         run: |
           python data_scraper.py
-          wget -i links/links.txt
+          wget -i links/links.txt -P data
+          rm links/links.txt
+          python data_cleaner.py
       - name: Commit and Push Changes
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
-          git add links/links.txt
+          git add data/tim_ryan.csv data/jd_vance.csv
           git commit -m "Updated data on `date` with GitHub Actions"
           git push origin master
