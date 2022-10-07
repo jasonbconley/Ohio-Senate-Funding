@@ -28,7 +28,7 @@ driver = webdriver.Chrome(options = chrome_options)
 ryan_url = 'https://www.fec.gov/data/reports/house-senate/?committee_id=C00777771&is_amended=false&data_type=processed&candidate_id=S2OH00402&cycle=2022'
 vance_url = 'https://www.fec.gov/data/reports/house-senate/?committee_id=C00772947&committee_id=C00783142&is_amended=false&data_type=processed&candidate_id=S2OH00436&cycle=2022'
 
-driver.get(ryan_url + '\n')
+driver.get(ryan_url)
 driver.implicitly_wait(5)
 
 links = driver.find_elements_by_xpath("//*[contains(text(), '.csv')]")
@@ -36,7 +36,7 @@ ryan_link = links[0].get_attribute('href')
 ryan_file = ryan_link[ryan_link.rfind('/')+1:]
 
 f = open('links/links.txt', 'a')
-f.write(ryan_link)
+f.write(ryan_link + '\n')
 
 driver.get(vance_url)
 driver.implicitly_wait(5)
