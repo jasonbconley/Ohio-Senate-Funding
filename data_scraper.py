@@ -25,6 +25,9 @@ for option in options:
     
 driver = webdriver.Chrome(options = chrome_options)
 
+ryan_url = 'https://www.fec.gov/data/reports/house-senate/?committee_id=C00777771&is_amended=false&data_type=processed&candidate_id=S2OH00402&cycle=2022'
+vance_url = 'https://www.fec.gov/data/reports/house-senate/?committee_id=C00772947&committee_id=C00783142&is_amended=false&data_type=processed&candidate_id=S2OH00436&cycle=2022'
+
 driver.get(ryan_url)
 driver.implicitly_wait(5)
 
