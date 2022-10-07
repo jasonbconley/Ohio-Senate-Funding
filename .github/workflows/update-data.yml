@@ -30,8 +30,8 @@ jobs:
       - name: Run Script and Update Data
         run: |
           python scripts/data_scraper.py
-          wget -i links/links.txt -P data
-          rm links/links.txt
+          wget -i links.txt -P data
+          rm links.txt
           python scripts/data_cleaner.py
       - name: Commit and Push Changes
         run: |
