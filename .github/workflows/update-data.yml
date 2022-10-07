@@ -29,6 +29,7 @@ jobs:
         run: pip install -r requirements.txt
       - name: Run Script and Update Data
         run: |
+          mkdir links
           python data_scraper.py
           wget -i links/links.txt -P data
           rm links/links.txt
@@ -37,6 +38,6 @@ jobs:
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
-          git add data/tim_ryan.csv data/jd_vance.csv
+          git add links/links.txt
           git commit -m "Updated data on `date` with GitHub Actions"
           git push origin master
