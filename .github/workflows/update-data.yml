@@ -41,4 +41,4 @@ jobs:
           git add data/tim_ryan.csv 
           git add data/jd_vance.csv
           git commit -m "Updated data on `date` with GitHub Actions"
-          git push origin master
+          git push origin main
