@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 jobs:
   update_data:
-    name: Update data if there are new filings
+    name: Update Funding Data
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
