@@ -27,7 +27,7 @@ jobs:
           export PATH="$HOME/.local/bin:$PATH"
     
       - name: Install Dependencies
-        run: pip install -r requirements.txt
+        run: pip install -r scripts/requirements.txt
       - name: Run Script and Update Data
         run: |
           python scripts/data_scraper.py
