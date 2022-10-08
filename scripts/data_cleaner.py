@@ -45,5 +45,8 @@ vance_details['State'] = vance.iloc[:,15]
 vance_details['Amount'] = vance.fillna(0).iloc[:,20]
 vance_details = vance_details.iloc[3:]
 
+# Dropping a credit card statement 
+ryan_details.drop(ryan_details.tail(2).index,inplace = True)
+
 ryan_details.to_csv('data/tim_ryan.csv')
 vance_details.to_csv('data/jd_vance.csv')

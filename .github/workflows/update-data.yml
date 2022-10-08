@@ -16,15 +16,16 @@ jobs:
           python-version: '3.7'
           cache: 'pip'  
       
-      - name: Installing ChromeDriver and Display
+      - name: Installing ChromeDriver and Display for Selenium
         run: pip install chromedriver-autoinstaller pyvirtualdisplay
 
-      - name: Install software
+      - name: Install software for Selenium
         run: | 
           sudo apt-get update
           sudo apt-get install -y chromium-driver
           sudo apt-get install xvfb
           export PATH="$HOME/.local/bin:$PATH"
+    
       - name: Install Dependencies
         run: pip install -r requirements.txt
       - name: Run Script and Update Data

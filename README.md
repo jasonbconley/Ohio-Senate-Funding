@@ -4,7 +4,7 @@ This repository visualizes the campaign funding for the Ohio Senate race between
 # Documentation of the project, end-to-end
 - Need to scrape data from FEC and possibly opensecrets.
   - Need to establish *where* the money is coming from
-  - Assign zipcode / county to contribution, *out-of-state* for others
+  - Assign coordinates to contribution, *out-of-state* for others
     - Might be easy to extend and break down the *out-of-state* category
 
 - Once GEOJson file is created, pipe into Svelte frontend and javascript backend?
@@ -15,7 +15,7 @@ This repository visualizes the campaign funding for the Ohio Senate race between
 
 - Create meaningful context, this might be difficult, need to learn some about journalistic writing / ethics.
 
-# The journey
+# Start of the Journey
 
 I started out trying to code the scraper following the "iris site" tutorial. I wanted to define a pipeline for the CSV files to be gathered from the FEC, and then updated if there is new data available. That way, once the dashboard is created and the github actions were set up, it would be dynamic as the candidates submitted new info.
 
@@ -28,8 +28,21 @@ This was new to me, but I had to use Selenium and a webdriver to allow my code t
 
 ## A Selenium Scraper with no Soup
 
-The final product for the scraper simply launches a browser, navigates to the relevant pages @ the FEC, and downloads the most recent CSV file. It then saves this file to the data folder.
+The final product for the scraper simply launches a browser, navigates to the relevant pages @ the FEC, and downloads the most recent CSV file. It then saves this file to the data folder. Atleast this was the thought process.
 
 ## Github Actions
+
+The github action phase went through many iterations, and I have some tips.
+
+Essentially github actions needs to be thought up as an easier way to spin up a virtual machine and execute some commands to get your stuff done. There is a lot to unpack with actions, but here are some main ideas:
+  - When defining your operating system, use ubuntu-latest. I tried to use debian for some reason, and my action was queued *forever*, (they might not even offer debian or other platform vm's)
+  - Lookup how to pipe pip requirements for your environment into a text file. It would have saved me a lot of time. 
+    - Subnote: There might be conflicts with ubuntu and whatever requirements are being used. I manually removed the ones that were causing me trouble, but there is probably an easier solution.
+  - Using selenium with Github actions was a pain to get setup correctly. Any action in my update-data.yml file in .github/workflows with "for Selenium" are the dependencies that I got it working with. Also, the display code in the beginning of scripts/data_scraper.py got it working as well. This portion could probably be cleaned up, but I didn't want to mess with it anymore. 
+  - If files need to be downloaded, wget with a text file full of URL's was simpler for me to use rather than some python code.
+
+Github actions had me in the weeds for a little bit, but remembering to use wget and reading some guides got me through it alright.
+
+## Nominatim
 
 
