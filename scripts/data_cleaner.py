@@ -46,8 +46,8 @@ vance_details['Amount'] = vance.fillna(0).iloc[:,20]
 vance_details = vance_details.iloc[3:]
 
 # Dropping a credit card statement 
-ryan.drop(ryan.loc[ryan['Amount']==0].index, inplace=True)
-vance.drop(vance.loc[vance['Amount']==0].index, inplace=True)
+ryan_details.drop(ryan_details.loc[ryan_details['Amount']==0].index, inplace=True)
+vance_details.drop(vance_details.loc[vance_details['Amount']==0].index, inplace=True)
 
 ryan_details.to_csv('data/tim_ryan.csv')
 vance_details.to_csv('data/jd_vance.csv')
